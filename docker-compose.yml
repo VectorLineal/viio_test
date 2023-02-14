@@ -1,0 +1,9 @@
+version: "1.0"
+
+services:
+  viio_test_API:
+    container_name: viio_test_API
+    build: .
+    restart: always
+    ports:
+      - "9000:9000"
