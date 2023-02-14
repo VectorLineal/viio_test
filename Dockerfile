@@ -1,3 +1,5 @@
+FROM node:16-alpine
+
 WORKDIR /viio_test_API
 
 ENV PORT 9000
@@ -13,7 +15,7 @@ COPY .env ./
 # Install all dependencies
 RUN npm install
 
-EXPOSE 3000
+EXPOSE 9000
 
-CMD ["npm", "start"]
+CMD npm start
 
