@@ -13,7 +13,7 @@ describe("Client", () => {
 	test("Create new client", async () => {
 		const data = {
 			email: "fulanito@test.com",
-			pasword: "123456",
+			password: "123456",
 		};
 
 		// Create new client
@@ -24,13 +24,13 @@ describe("Client", () => {
 
 		// Compare values
 		expect(newClient?.email).toBe(data.email);
-		expect(newClient?.pasword).toBe(data.pasword);
+		expect(newClient?.password).toBe(data.password);
 	});
 
 	test("Try to login a new client", async () => {
 		const data = {
 			email: "fulanito@test.com",
-			pasword: "123456",
+			password: "123456",
 		};
 
 		// Create new client
@@ -46,6 +46,6 @@ describe("Client", () => {
 		const decoded = jwt.verify(token, process.env.MY_SECRET);
 
 		// Compare values
-		expect(decoded).toBe(loginData.email);
+		expect(decoded.email).toBe(loginData.email);
 	});
 });

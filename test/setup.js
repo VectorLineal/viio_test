@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { MongoMemoryServer } = require("mongodb-memory-server");
+require("dotenv").config();
 
 beforeAll(async () => {
 	global.TEST_MONGO_SERVER = await MongoMemoryServer.create();
@@ -11,7 +12,6 @@ beforeAll(async () => {
 		connectTimeoutMS: 30000,
 		autoIndex: true,
 		useUnifiedTopology: true,
-		useFindAndModify: false,
 	};
 
 	await mongoose.connect(global.TEST_MONGO_SERVER_URI, mongooseOpts);

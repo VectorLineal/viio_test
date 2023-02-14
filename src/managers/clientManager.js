@@ -14,11 +14,11 @@ const createClient = async (data) => {
 
 const login = async (data) => {
 	try {
-		const newClient = await clientSchema.find({ email: data.email });
-		if (!newClient || newClient.length == 0) return "";
-		else if (newClient[0].password != data.password) return "";
+		const [newClient] = await clientSchema.find({ email: data.email });
+		if (!newClient) return "";
+		else if (newClient.password != data.password) return "";
 
-		const token = jwt.sign({ email: newClient[0].email }, process.env.MY_SECRET, { expiresIn: "50s" });
+		const token = jwt.sign({ email: newClient.email }, process.env.MY_SECRET, { expiresIn: "50s" });
 		return token;
 	} catch (e) {
 		throw new Error(e);
